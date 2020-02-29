@@ -5,7 +5,7 @@ namespace Client
 {
     public class SnakeBattleClient : SnakeBattleBase
     {
-        private Func<GameBoard, SnakeAction> _callback;
+        private IDecider decider;
 
         public SnakeBattleClient(string serverAddress) : base(serverAddress)
         {
@@ -18,7 +18,7 @@ namespace Client
             //Console.SetCursorPosition(0, 0);
             gameBoard.PrintBoard();
 
-            var action = _callback(gameBoard).ToString();
+            var action = decider.MakeMove(gameBoard).ToString();
             Console.WriteLine(action);
             return action;
         }
@@ -28,10 +28,10 @@ namespace Client
             ShouldExit = true;
         }
 
-        public void Run(Func<GameBoard, SnakeAction> callback)
+        public void Run(IDecider decider)
         {
             Connect();
-            this._callback = callback;
+            this.decider = decider;
         }
     }
 }
