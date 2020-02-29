@@ -1,0 +1,11 @@
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\bin\Debug\Client.exe.config
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\bin\Debug\Client.exe
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\bin\Debug\Client.pdb
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\bin\Debug\SnakeBattle.Api.dll
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\bin\Debug\websocket-sharp.dll
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\bin\Debug\SnakeBattle.Api.pdb
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\bin\Debug\websocket-sharp.xml
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\obj\Debug\Client.csproj.CopyComplete
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\obj\Debug\Client.exe
+C:\Users\Женя\Downloads\codebattle-snakebattle-clients-master\CodeBattleNet\Client\obj\Debug\Client.pdb
