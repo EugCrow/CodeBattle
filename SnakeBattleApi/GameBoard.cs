@@ -12,7 +12,18 @@ namespace SnakeBattle.Api
             BoardString = boardString.Replace("\n", "");
             Size = (int)Math.Sqrt(BoardString.Length);
             Square = BoardString.Length;
+
+            Board = new BoardElement[Size,Size];
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    Board[i,j] = (BoardElement)GetElementAt(new BoardPoint(i, j));
+                }
+            }
         }
+
+        public BoardElement[,] Board;
 
         /// <summary>
         /// Строка, представляющая собой поле.
@@ -44,9 +55,21 @@ namespace SnakeBattle.Api
             return GetBarriers().Contains(point);
         }
 
+        public bool IsBadThingAt(BoardPoint point)
+        {
+            return GetBadThings().Contains(point);
+        }
+
         public List<BoardPoint> GetApples()
         {
-            return FindAllElements(Apple);
+            var list = new List<BoardPoint>();
+            for (int i = 0; i < Size; i++)
+                for (int j = 0; j < Size; j++)
+                {
+                    if (Board[i, j] == BoardElement.Apple)
+                        list.Add(new BoardPoint(i, j));
+                }
+            return list;
         }
 
         public bool AmIEvil()
@@ -85,6 +108,36 @@ namespace SnakeBattle.Api
         private List<BoardPoint> GetBarriers()
         {
             return FindAllElements(Wall, StartFloor, EnemyHeadSleep, EnemyTailInactive, TailInactive, Stone);
+        }
+
+        private List<BoardPoint> GetBadThings()
+        {
+            var myBodyElements = new[]
+            {
+                BodyHorizontal, BodyVertical, BodyLeftDown, BodyLeftUp, BodyRightDown, BodyRightUp
+            };
+            var myTailElements = new[]
+            {
+                TailEndDown,
+                TailEndLeft,
+                TailEndUp,
+                TailEndRight,
+                TailInactive
+            };
+            var enemyBodyElements = new[]
+            {
+                EnemyBodyHorizontal,
+                EnemyBodyVertical,
+                EnemyBodyLeftDown,
+                EnemyBodyLeftUp,
+                EnemyBodyRightDown,
+                EnemyBodyRightUp
+            };
+            return FindAllElements(new[] { Wall, StartFloor, EnemyHeadSleep, EnemyTailInactive, TailInactive, Stone }
+            .Concat(myBodyElements)
+            .Concat(enemyBodyElements)
+            .Concat(myTailElements)
+            .ToArray());
         }
 
         /// <summary>
@@ -135,7 +188,7 @@ namespace SnakeBattle.Api
             {
                 var point = GetPointByShift(i);
 
-                foreach(var element in elements)
+                foreach (var element in elements)
                 {
                     if (HasElementAt(point, element))
                     {
@@ -154,7 +207,7 @@ namespace SnakeBattle.Api
             {
                 var point = GetPointByShift(i);
 
-                foreach(var element in elements)
+                foreach (var element in elements)
                 {
                     if (HasElementAt(point, element))
                     {

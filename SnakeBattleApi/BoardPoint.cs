@@ -1,4 +1,6 @@
-﻿namespace SnakeBattle.Api
+﻿using System.Collections.Generic;
+
+namespace SnakeBattle.Api
 {
     public struct BoardPoint
     {
@@ -52,6 +54,17 @@
         {
             return new BoardPoint(X, Y + delta);
 
+        }
+
+        public IEnumerable<BoardPoint> Neighborhood
+        { 
+            get
+            {
+                yield return ShiftBottom();
+                yield return ShiftTop();
+                yield return ShiftRight();
+                yield return ShiftLeft();
+            }
         }
 
         public static bool operator ==(BoardPoint p1, BoardPoint p2)
